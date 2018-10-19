@@ -6,13 +6,14 @@
     </div>
 
     <div class="row">
-      <div :class="[searchTerm ? 'col-md-3' : 'col-md-1']">
-        <sidebar/>
+      <div :class="[searchTerm || showCreate ? 'col-md-3' : 'col-md-1']">
+        <sidebar @createEvent="createEvent"/>
       </div>
 
-      <div :class="[searchTerm ? 'col-md-9' : 'col-md-11']">
-        <calender v-if="!searchTerm" :json="json" />
-        <search-display :searchTerm="searchTerm" :json="json" v-else />
+      <div :class="[searchTerm || showCreate ? 'col-md-9' : 'col-md-11']">
+        <calender v-if="!searchTerm && !showCreate" :json="json" />
+        <search-display :searchTerm="searchTerm" :json="json" v-else-if="!showCreate" />
+        <create-update v-else />
       </div>
     </div>
 
@@ -26,6 +27,7 @@ import Navbar from './navbar.vue'
 import Sidebar from './sidebar.vue'
 import Calendar from './Calendar.vue'
 import Searchdisplay from './Searchdisplay.vue'
+import Createupdate from './Createupdate.vue'
 export default {
   name: 'app',
   components:{
@@ -33,16 +35,21 @@ export default {
     'calender' : Calendar,
     'sidebar' : Sidebar,
     'search-display' : Searchdisplay,
+    'create-update' : Createupdate,
   },
   methods:{
     handleSearch(term){
       this.searchTerm = term
+    },
+    createEvent(){
+      this.showCreate = !this.showCreate
     }
   },
   data () {
     return {
       searchTerm: '',
       json: JSONDATA,
+      showCreate:false,
     }
   }
 }
