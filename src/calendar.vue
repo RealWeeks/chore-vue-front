@@ -6,22 +6,17 @@
 </template>
 
 <script>
-// const jsondata = require('./assets/chore-calender.json')
-import jsondata from './assets/chore-calendar.json';
 export default {
   name: 'calender',
+  props:['json'],
   components : {
   	'full-calendar': require('vue-fullcalendar')
   },
   created(){
-
-    // debugger;
-
   },
   data () {
     return {
-      json: jsondata
-      // msg: 'Welcome to Your Vue.js App'
+
     }
   }
 }
