@@ -1,13 +1,32 @@
-# chore-vue
+# Chore Calendar ICS
 
-> A Vue.js project
+A front end interface for viewing and editing a shared chore calender.
 
-## Build Setup
+Data generated via branch of [ics-chore-chart](https://github.com/RealWeeks/ics-chore-chart).
+
+Future plans include an API for calender subscription and management.
+Maybe ported mobile app depending on how busy I get.
+
+## Getting Started
+
+These instructions will get you a copy of the project up and running on your local machine for development and testing purposes. See deployment for notes on how to deploy the project on a live system.
+
+### Prerequisites
+
+Node 8.12 reccomended (6 is fine).
+
+
+### Installing
+
+Install depencencies
+
+```
+npm i
+```
+
+## Deployment
 
 ``` bash
-# install dependencies
-npm install
-
 # serve with hot reload at localhost:8080
 npm run dev
 
@@ -15,4 +34,25 @@ npm run dev
 npm run build
 ```
 
-For detailed explanation on how things work, consult the [docs for vue-loader](http://vuejs.github.io/vue-loader).
+## Built With
+
+* [vue-fullcalendar](https://github.com/Wanderxx/vue-fullcalendar) - Calendar component
+* [bootstrap-vue](https://bootstrap-vue.js.org/) - UI framework
+
+## Contributing
+
+PRs completely welcome.
+
+
+## Authors
+
+* **Jason Weeks**
+
+
+## License
+
+This project is licensed under the GNU General Public License v3.0 - see the [LICENSE](LICENSE.md) file for details
+
+## Acknowledgments
+
+* A dirty apartment
