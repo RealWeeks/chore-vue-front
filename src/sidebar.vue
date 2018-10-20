@@ -5,7 +5,7 @@
       <h3 class="secondary-txt">An easy viewer for roomate tasks</h3><br/>
       <div class="btn-holder">
         <b-button @click="handleEventCreate" variant="outline-info">Create Item</b-button>
-        <b-button variant="info">Set Away Dates</b-button>
+        <b-button @click="handleShowAway" variant="info">Set Away Dates</b-button>
       </div>
       <div class="search-wrapper">
         <b-form-input size="sm" class="mr-sm-2" type="text" v-model="searchInput" @input="handleInput" placeholder="Type to quick find"/>
@@ -20,6 +20,9 @@ export default {
   components : {
   },
   methods:{
+    handleShowAway(){
+      this.$emit('showAway')
+    },
     handleEventCreate(){
       this.$emit('createEvent')
     },

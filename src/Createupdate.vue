@@ -1,5 +1,5 @@
 <template>
-  <div id="create-update">
+  <div id="create-update" class="standard-form">
     <div class="form-wrapper">
       <b-form @reset="onReset" v-if="show">
         <b-form-group
@@ -131,31 +131,4 @@ export default {
 </script>
 
 <style lang="scss">
-#create-update{
-  // margin-top: 5%;
-  display: flex;
-  justify-content: center;
-  color: #00d0aa;
-  background-color: #1a2a33;
-  .datepicker input{
-    width: 100%;
-    height:calc(2.25rem + 2px);
-  }
-  .edit-only{
-    width:100% !important;
-    margin-bottom: 15px;
-  }
-  .form-wrapper{
-    display: flex;
-    justify-content: center;
-  }
-  .btn-wrapper{
-    display: flex;
-    justify-content: center;
-    margin-bottom: 15px;
-    .btn{
-      width:50%;
-    }
-  }
-}
 </style>

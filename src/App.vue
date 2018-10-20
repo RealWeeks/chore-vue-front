@@ -7,12 +7,13 @@
 
     <div class="row main-contents">
       <div class="col-md-5 set-colors">
-        <sidebar @searchInput="handleSearch" @createEvent="createEvent"/>
+        <sidebar @searchInput="handleSearch" @showAway="showAway" @createEvent="createEvent"/>
       </div>
 
       <div class="col-md-7 set-colors">
         <calender v-if="showCalComponent" :json="events" />
-        <search-display :searchTerm="searchTerm" :json="events" v-else-if="!showCreate" />
+        <search-display :searchTerm="searchTerm" :json="events" v-else-if="!showCreate && !showAwayForm" />
+        <away-time v-else-if="showAwayForm" />
         <create-update class="add-top-margin" v-else />
       </div>
     </div>
@@ -44,7 +45,7 @@ export default {
   },
   computed:{
     showCalComponent(){
-      return !this.searchTerm && !this.showCreate && this.events.length > 0
+      return !this.searchTerm && !this.showCreate && this.events.length > 0 && !this.showAwayForm
     },
     events(){
       return this.$store.state.events
@@ -56,6 +57,9 @@ export default {
     },
     createEvent(){
       this.showCreate = !this.showCreate
+    },
+    showAway(){
+      this.showAwayForm = !this.showAwayForm
     }
   },
   data () {
@@ -63,6 +67,7 @@ export default {
       searchTerm: '',
       // json: JSONDATA,
       showCreate:false,
+      showAwayForm: false,
     }
   }
 }
@@ -115,6 +120,33 @@ html, body, #container, #app{
   }
   .full-calendar-header{
     background-color: #97e2d58c !important;
+  }
+}
+.standard-form{
+  // margin-top: 5%;
+  display: flex;
+  justify-content: center;
+  color: #00d0aa;
+  background-color: #1a2a33;
+  .datepicker input{
+    width: 100%;
+    height:calc(2.25rem + 2px);
+  }
+  .edit-only{
+    width:100% !important;
+    margin-bottom: 15px;
+  }
+  .form-wrapper{
+    display: flex;
+    justify-content: center;
+  }
+  .btn-wrapper{
+    display: flex;
+    justify-content: center;
+    margin-bottom: 15px;
+    .btn{
+      width:50%;
+    }
   }
 }
 </style>
