@@ -71,12 +71,16 @@ export default {
       this.form.start = moment(this.form.start).format('MM-DD-YYYY')
       this.axios.post('http://localhost:3000/events', this.form)
       .then((response)=>{
+        if (response.data.error) {
+          return Promise.reject(response.data)
+        }else{
+          this.showSuccessMsg({message: 'Added new task.'})
+        }
         this.$store.dispatch('GET_EVENTS')
         this.$emit('closeCreateUpdate')
-        this.showSuccessMsg({message: 'Added new task.'})
       })
       .catch((err)=>{
-        this.showErrorMsg({message:'Error creating event.'})
+        this.showErrorMsg({message: `${err.error ? err.error: 'Error creating task'}` })
       })
     },
     onReset () {
