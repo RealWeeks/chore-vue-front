@@ -11,8 +11,8 @@
       </div>
 
       <div :class="[searchTerm || showCreate ? 'col-md-9' : 'col-md-11']">
-        <calender v-if="!searchTerm && !showCreate" :json="json" />
-        <search-display :searchTerm="searchTerm" :json="json" v-else-if="!showCreate" />
+        <calender v-if="showCalComponent" :json="events" />
+        <search-display :searchTerm="searchTerm" :json="events" v-else-if="!showCreate" />
         <create-update v-else />
       </div>
     </div>
@@ -37,6 +37,17 @@ export default {
     'search-display' : Searchdisplay,
     'create-update' : Createupdate,
   },
+  created(){
+    this.$store.dispatch('GET_EVENTS')
+  },
+  computed:{
+    showCalComponent(){
+      return !this.searchTerm && !this.showCreate && this.events.length > 0
+    },
+    events(){
+      return this.$store.state.events
+    }
+  },
   methods:{
     handleSearch(term){
       this.searchTerm = term
@@ -48,7 +59,7 @@ export default {
   data () {
     return {
       searchTerm: '',
-      json: JSONDATA,
+      // json: JSONDATA,
       showCreate:false,
     }
   }

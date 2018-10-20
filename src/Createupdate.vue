@@ -14,7 +14,7 @@
         </b-form-group>
         <b-form-group
                       label="Date:">
-          <datepicker v-model="form.date" class="datepicker"></datepicker>
+          <datepicker v-model="form.start" class="datepicker"></datepicker>
         </b-form-group>
         <b-form-group
                       label="Your Name">
@@ -66,7 +66,7 @@ export default {
       this.form.name = ''
       this.form.task = ''
       this.form.person = null
-      this.form.date = Date.now()
+      this.form.start = Date.now()
       /* Trick to reset/clear native browser form validation state */
       this.show = false;
       this.$nextTick(() => { this.show = true })
@@ -80,7 +80,7 @@ export default {
         person: null,
         name: '',
         task: '',
-        date: Date.now(),
+        start: Date.now(),
         allDay: true
       },
       people: [
