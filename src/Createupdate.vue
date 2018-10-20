@@ -1,7 +1,7 @@
 <template>
   <div id="create-update">
-    <div>
-      <b-form @submit="onSubmit" @reset="onReset" v-if="show">
+    <div class="form-wrapper">
+      <b-form @reset="onReset" v-if="show">
         <b-form-group
                     label="Task name"
                     description="Just enter task name and we'll take care of the formatting">
@@ -32,11 +32,11 @@
                       v-model="form.task">
         </b-form-select>
         </b-form-group>
-
-
-
-        <b-button type="submit" variant="primary">Submit</b-button>
-        <b-button type="reset" variant="danger">Reset</b-button>
+        <b-button-group class="btn-wrapper">
+          <b-button v-if="!eventTask" type="reset" variant="danger">Reset</b-button>
+          <b-button v-if="eventTask" @click="onEdit" :class="{'edit-only' : eventTask}" variant="info">Edit</b-button>
+          <b-button v-else @click="onSubmit" type="submit" variant="primary">Submit</b-button>
+        </b-button-group>
       </b-form>
     </div>
   </div>
@@ -50,8 +50,18 @@ export default {
   components : {
     'datepicker': Datepicker
   },
-  props:['selectedDate'],
+  props:['selectedDate', 'eventTask'],
   methods:{
+    onEdit(){
+      this.axios.put(`http://localhost:3000/events/${this.eventTask._id}`, this.form )
+      .then((response)=>{
+        this.$store.dispatch('GET_EVENTS')
+        this.$emit('closeCreateUpdate')
+      })
+      .catch((err)=>{
+        debugger
+      })
+    },
     onSubmit (e) {
       e.preventDefault()
       this.form.start = moment(this.form.start).format('MM-DD-YYYY')
@@ -64,8 +74,7 @@ export default {
         debugger
       })
     },
-    onReset (e) {
-      e.preventDefault();
+    onReset () {
       this.form.name = ''
       this.form.task = ''
       this.form.person = null
@@ -81,6 +90,16 @@ export default {
   watch:{
     selectedDate(date){
       this.form.start = date
+    },
+    eventTask(task){
+      if(task){
+        this.form.name = task.name
+        this.form.task = task.task
+        this.form.person = task.person
+        this.form.start = task.start
+      }else{
+        this.onReset()
+      }
     }
   },
   data () {
@@ -109,10 +128,26 @@ export default {
 <style lang="scss">
 #create-update{
   margin-top: 5%;
-  max-width: 90%;
+  // max-width: 90%;
+  display: flex;
+  justify-content: center;
   .datepicker input{
     width: 100%;
     height:calc(2.25rem + 2px);
+  }
+  .edit-only{
+    width:100% !important;
+  }
+  .form-wrapper{
+    display: flex;
+    justify-content: center;
+  }
+  .btn-wrapper{
+    display: flex;
+    justify-content: center;
+    .btn{
+      width:50%;
+    }
   }
 }
 </style>
