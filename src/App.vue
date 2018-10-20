@@ -87,6 +87,7 @@ html, body, #container, #app{
 }
 .btn-outline-info{
   color: white;
+  font-family: 'Lato', sans-serif;
   background-color: transparent;
   background-image: none;
   border-color: #00cfaa;
@@ -101,6 +102,7 @@ html, body, #container, #app{
   justify-content: space-around;
   .btn{
     width: 40%;
+    font-family: 'Lato', sans-serif;
   }
 }
 .set-colors{
@@ -139,6 +141,9 @@ html, body, #container, #app{
   .form-wrapper{
     display: flex;
     justify-content: center;
+      legend{
+        font-family: 'Lato', sans-serif;
+      }
   }
   .btn-wrapper{
     display: flex;

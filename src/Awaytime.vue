@@ -1,6 +1,6 @@
 <template>
-  <div id="away-time">
-    <div class="form-wrapper standard-form">
+  <div id="away-time" class="standard-form">
+    <div class="form-wrapper">
       <b-form @reset="onReset" v-if="show">
         <b-form  class="away-date-inputs" inline>
         <b-form-group

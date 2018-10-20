@@ -41,7 +41,7 @@ export default {
 </script>
 
 <style lang="scss">
-@import url('https://fonts.googleapis.com/css?family=Lato|Montserrat');
+@import url('https://fonts.googleapis.com/css?family=Lato:300|Montserrat:800');
 #sidebar{
   .card-content{
     height:100%;
@@ -52,11 +52,13 @@ export default {
   }
   .headline-txt{
     color: #00cfaa;
+    font-size: 4em;
     font-family: 'Montserrat', sans-serif;
   }
   .secondary-txt{
     color: white;
     font-family: 'Lato', sans-serif;
+    font-size: 2em;
   }
   .search-wrapper{
     margin-top: 15%;
