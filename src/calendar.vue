@@ -1,9 +1,9 @@
 <template>
-  <div id="calender">
+  <div id="calender-wrapper">
       <div id='calendar'>
         <full-calendar :events="calendarizedData" :config="config" @eventClick="eventClick" @dayClick="dayClick" locale="en"></full-calendar>
         <div>
-         <b-modal ref="quickCreate" @hidden="eventTask = null" hide-footer title="Quick create">
+         <b-modal ref="quickCreate" @hidden="eventTask = null" hide-footer hide-header>
            <create-update @closeCreateUpdate="hideModal" :eventTask="eventTask" :selectedDate="selectedDate"/>
            <!-- <b-btn class="mt-3" @click="hideModal" variant="outline-danger" block >Close</b-btn> -->
          </b-modal>
@@ -60,5 +60,9 @@ export default {
 </script>
 
 <style lang="scss">
-
+#calendar{
+  .modal-body{
+    padding: 5px;
+  }
+}
 </style>

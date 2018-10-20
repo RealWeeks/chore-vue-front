@@ -1,10 +1,10 @@
 <template>
   <div id="navbar">
-    <b-navbar toggleable="md" type="dark" variant="dark">
+    <b-navbar toggleable="md">
 
     <b-navbar-toggle target="nav_collapse"></b-navbar-toggle>
 
-    <b-navbar-brand href="#">Chore Calendar Viewer</b-navbar-brand>
+    <!-- <b-navbar-brand href="#">Chore Calendar Viewer</b-navbar-brand> -->
 
     <b-collapse is-nav id="nav_collapse">
 
@@ -49,5 +49,8 @@ export default {
 </script>
 
 <style lang="scss">
-
+#navbar{
+  padding: 0;
+  background-color: #1a2a33 !important;
+}
 </style>

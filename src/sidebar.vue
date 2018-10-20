@@ -1,14 +1,13 @@
 <template>
   <div id="sidebar">
-      <div>
-        <b-nav vertical class="w-25">
-          <b-nav-item @click="handleEventCreate"><b-button variant="success">Create Item</b-button></b-nav-item>
-          <b-nav-item><b-button variant="info">Reassign Item</b-button></b-nav-item>
-          <b-nav-item><b-button variant="info">Set Away Dates</b-button></b-nav-item>
-          <b-nav-item><b-button variant="danger">Remove Item</b-button></b-nav-item>
-          <b-nav-item disabled><b-button variant="outline-success">Do a trick</b-button></b-nav-item>
-        </b-nav>
+    <div class="card-content">
+      <h1 class="headline-txt">Task Assigner...</h1><br/>
+      <h3 class="secondary-txt">An easy viewer for roomate tasks</h3><br/>
+      <div class="btn-holder">
+        <b-button @click="handleEventCreate" variant="outline-info">Create Item</b-button>
+        <b-button variant="info">Set Away Dates</b-button>
       </div>
+    </div>
   </div>
 </template>
 
@@ -33,5 +32,22 @@ export default {
 </script>
 
 <style lang="scss">
-
+@import url('https://fonts.googleapis.com/css?family=Lato|Montserrat');
+#sidebar{
+  .card-content{
+    height:100%;
+    margin-top: 20%;
+    display: flex;
+    flex-direction: column;
+    margin-left: 5%;
+  }
+  .headline-txt{
+    color: #00cfaa;
+    font-family: 'Montserrat', sans-serif;
+  }
+  .secondary-txt{
+    color: white;
+    font-family: 'Lato', sans-serif;
+  }
+}
 </style>
