@@ -61,7 +61,7 @@ export default {
       this.form.start = moment(this.form.start).format('MM-DD-YYYY')
       this.form.end = moment(this.form.end).format('MM-DD-YYYY')
       this.form.date_range = this.dateRange;
-
+// debugger
       this.axios.post('http://localhost:3000/events', this.form)
       .then((response)=>{
         this.$store.dispatch('GET_EVENTS')
@@ -79,10 +79,10 @@ export default {
       let end   = new Date(this.form.end)
       let range = Moment.range(start, end)
       for (let day of range.by('day')) {
-        day.format('YYYY-MM-DD');
+        day.format('MM-DD-YYYY');
       }
       let days = Array.from(range.by('day'));
-      return days.map(x => x.format('YYYY-MM-DD')) // [ '2018-10-03', '2018-10-04', '2018-10-05', '2018-10-06' ]
+      return days.map(x => x.format('MM-DD-YYYY')) // [ '2018-10-03', '2018-10-04', '2018-10-05', '2018-10-06' ]
     }
   },
   data () {
