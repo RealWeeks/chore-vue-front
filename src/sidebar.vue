@@ -2,7 +2,7 @@
   <div id="sidebar">
       <div>
         <b-nav vertical class="w-25">
-          <b-nav-item><b-button variant="success" @click="handleEventCreate">Create Item</b-button></b-nav-item>
+          <b-nav-item @click="handleEventCreate"><b-button variant="success">Create Item</b-button></b-nav-item>
           <b-nav-item><b-button variant="info">Reassign Item</b-button></b-nav-item>
           <b-nav-item><b-button variant="info">Set Away Dates</b-button></b-nav-item>
           <b-nav-item><b-button variant="danger">Remove Item</b-button></b-nav-item>

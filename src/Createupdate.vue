@@ -43,18 +43,22 @@
 </template>
 
 <script>
+import moment from 'moment'
 import Datepicker from 'vuejs-datepicker'
 export default {
   name: 'create-update',
   components : {
     'datepicker': Datepicker
   },
+  props:['selectedDate'],
   methods:{
     onSubmit (e) {
       e.preventDefault()
+      this.form.start = moment(this.form.start).format('MM-DD-YYYY')
       this.axios.post('http://localhost:3000/events', this.form)
       .then((response)=>{
-        debugger
+        this.$store.dispatch('GET_EVENTS')
+        this.$emit('closeCreateUpdate')
       })
       .catch((err)=>{
         debugger
@@ -62,7 +66,6 @@ export default {
     },
     onReset (e) {
       e.preventDefault();
-
       this.form.name = ''
       this.form.task = ''
       this.form.person = null
@@ -73,6 +76,12 @@ export default {
     }
   },
   created(){
+    this.form.start = Date.now()
+  },
+  watch:{
+    selectedDate(date){
+      this.form.start = date
+    }
   },
   data () {
     return {
@@ -80,7 +89,7 @@ export default {
         person: null,
         name: '',
         task: '',
-        start: Date.now(),
+        start: '',
         allDay: true
       },
       people: [

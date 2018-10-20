@@ -1,17 +1,35 @@
 <template>
   <div id="calender">
-      <div id='calendar'></div>
-      <full-calendar :events="calendarizedData" locale="en"></full-calendar>
+      <div id='calendar'>
+        <full-calendar :events="calendarizedData" :config="config" @dayClick="dayClick" locale="en"></full-calendar>
+        <div>
+         <b-modal ref="quickCreate" hide-footer title="Quick create">
+           <create-update @closeCreateUpdate="hideModal" :selectedDate="selectedDate"/>
+           <b-btn class="mt-3" @click="hideModal" variant="outline-danger" block >Close</b-btn>
+         </b-modal>
+       </div>
+      </div>
   </div>
 </template>
 
 <script>
 import moment from 'moment'
+import Createupdate from './Createupdate.vue'
 export default {
   name: 'calender',
   props:['json'],
   components : {
-  	'full-calendar': require('vue-fullcalendar')
+  	'full-calendar': require('vue-fullcalendar'),
+    'create-update' : Createupdate,
+  },
+  methods:{
+    dayClick(date){
+      this.selectedDate = date
+      this.$refs.quickCreate.show()
+    },
+    hideModal(){
+      this.$refs.quickCreate.hide()
+    }
   },
   created(){
   },
@@ -19,14 +37,18 @@ export default {
     calendarizedData(){
       return this.json.map((x)=>{
         x.title = `${x.task}: ${x.person}`
-        x.start = moment(x.date).format('MM-DD-YYYY')
+        x.start = moment(x.start).format('MM-DD-YYYY')
         return x
       })
     }
   },
   data () {
     return {
-
+      selectedDate:null,
+      config: {
+        selectable: true,
+        editable:true,
+      }
     }
   }
 }
