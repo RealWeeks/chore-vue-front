@@ -2,7 +2,8 @@
 
 A front end interface for viewing and editing a shared chore calender.
 
-Data generated via branch of [ics-chore-chart](https://github.com/RealWeeks/ics-chore-chart).
+~Data generated via branch of [ics-chore-chart](https://github.com/RealWeeks/ics-chore-chart).~
+Data pulled from [chore-back](https://github.com/RealWeeks/chore-back).(10/19/2018).
 
 Future plans include an API for calender subscription and management.
 Maybe ported mobile app depending on how busy I get.
@@ -35,9 +36,9 @@ npm run build
 ```
 
 ## Built With
-
 * [vue-fullcalendar](https://github.com/Wanderxx/vue-fullcalendar) - Calendar component
 * [bootstrap-vue](https://bootstrap-vue.js.org/) - UI framework
+* [vuejs-datepicker](https://github.com/charliekassel/vuejs-datepicker) - Datepicker
 
 ## Contributing
 
