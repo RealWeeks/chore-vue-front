@@ -1,7 +1,7 @@
 <template>
   <div id="away-time" class="standard-form">
     <div class="form-wrapper">
-      <b-form @reset="onReset" v-if="show">
+      <b-form v-if="show">
         <b-form  class="away-date-inputs" inline>
         <b-form-group
                       label="Start date">
@@ -34,10 +34,13 @@
 </template>
 
 <script>
+import moment from 'moment'
 import Datepicker from 'vuejs-datepicker'
+import Notifications from './common/notifications.vue'
 export default {
   name: 'away-time',
   props:[],
+  mixins:[Notifications],
   components : {
     'datepicker': Datepicker
   },
@@ -46,13 +49,24 @@ export default {
   methods:{
     onReset () {
       this.form.person = null
-      this.form.start = Date.now()
+      this.form.start = ''
+      this.form.end = ''
       /* Trick to reset/clear native browser form validation state */
       this.show = false;
       this.$nextTick(() => { this.show = true })
     },
     handleSetAway(){
-
+      this.form.start = moment(this.form.start).format('MM-DD-YYYY')
+      this.form.end = moment(this.form.end).format('MM-DD-YYYY')
+      this.axios.post('http://localhost:3000/events', this.form)
+      .then((response)=>{
+        this.$store.dispatch('GET_EVENTS')
+        this.$emit('closeAwaytime')
+        this.showSuccessMsg({message: 'Away dates added.'})
+      })
+      .catch((err)=>{
+        this.showErrorMsg({message:'Error adding dates.'})
+      })
     }
   },
   computed:{
@@ -63,7 +77,9 @@ export default {
       form: {
         person: null,
         start: '',
-        end:''
+        end:'',
+        allDay:true,
+        event_type: 'away'
       },
       people: [
         { text: 'Select One', value: null },
