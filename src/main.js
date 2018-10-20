@@ -1,17 +1,35 @@
 import Vue from 'vue'
 import BootstrapVue from "bootstrap-vue"
-import { store } from './store/store'
-import App from './App.vue'
-import "bootstrap/dist/css/bootstrap.min.css"
-import "bootstrap-vue/dist/bootstrap-vue.css"
-
+import VueNotifications from 'vue-notifications'
+import miniToastr from 'mini-toastr'
 import axios from 'axios'
 import VueAxios from 'vue-axios'
 
 import fullCalendar from 'vue-fullcalendar'
 
+import { store } from './store/store'
+import App from './App.vue'
+
+import "bootstrap/dist/css/bootstrap.min.css"
+import "bootstrap-vue/dist/bootstrap-vue.css"
+
+
+miniToastr.init()
+
+function toast ({title, message, type, timeout, cb}) {
+  return miniToastr[type](message, title, timeout, cb)
+}
+
+const options = {
+  success: toast,
+  error: toast,
+  info: toast,
+  warn: toast
+}
+
 Vue.component('full-calendar', fullCalendar)
 
+Vue.use(VueNotifications, options)
 Vue.use(BootstrapVue)
 Vue.use(VueAxios, axios)
 

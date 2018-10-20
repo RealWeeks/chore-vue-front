@@ -22,7 +22,7 @@
 </template>
 
 <script>
-import JSONDATA from './assets/chore-calendar.json';
+// import JSONDATA from './assets/chore-calendar.json';
 import Navbar from './navbar.vue'
 import Sidebar from './sidebar.vue'
 import Calendar from './Calendar.vue'

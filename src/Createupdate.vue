@@ -45,11 +45,13 @@
 <script>
 import moment from 'moment'
 import Datepicker from 'vuejs-datepicker'
+import Notifications from './common/notifications.vue'
 export default {
   name: 'create-update',
   components : {
     'datepicker': Datepicker
   },
+  mixins:[Notifications],
   props:['selectedDate', 'eventTask'],
   methods:{
     onEdit(){
@@ -57,9 +59,11 @@ export default {
       .then((response)=>{
         this.$store.dispatch('GET_EVENTS')
         this.$emit('closeCreateUpdate')
+        this.showSuccessMsg({message: 'Task edited.'})
       })
       .catch((err)=>{
-        debugger
+        this.showErrorMsg({message:'error updating'})
+        // hide server errors from user
       })
     },
     onSubmit (e) {
@@ -69,9 +73,10 @@ export default {
       .then((response)=>{
         this.$store.dispatch('GET_EVENTS')
         this.$emit('closeCreateUpdate')
+        this.showSuccessMsg({message: 'Added new task.'})
       })
       .catch((err)=>{
-        debugger
+        this.showErrorMsg({message:'Error creating event.'})
       })
     },
     onReset () {
@@ -128,7 +133,6 @@ export default {
 <style lang="scss">
 #create-update{
   margin-top: 5%;
-  // max-width: 90%;
   display: flex;
   justify-content: center;
   .datepicker input{

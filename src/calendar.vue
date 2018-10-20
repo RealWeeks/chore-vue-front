@@ -24,7 +24,6 @@ export default {
   },
   methods:{
     eventClick(eventTask){
-      // debugger
       this.$refs.quickCreate.show()
       this.eventTask = eventTask
 
@@ -43,7 +42,6 @@ export default {
     calendarizedData(){
       return this.json.map((x)=>{
         x.title = `${x.task}: ${x.person}`
-        // x.start = moment(x.start).format('MM-DD-YYYY')
         return x
       })
     }
