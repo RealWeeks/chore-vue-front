@@ -51,8 +51,14 @@ export default {
   },
   methods:{
     onSubmit (e) {
-      e.preventDefault();
-      alert(JSON.stringify(this.form));
+      e.preventDefault()
+      this.axios.post('http://localhost:3000/events', this.form)
+      .then((response)=>{
+        debugger
+      })
+      .catch((err)=>{
+        debugger
+      })
     },
     onReset (e) {
       e.preventDefault();
@@ -74,7 +80,8 @@ export default {
         person: null,
         name: '',
         task: '',
-        date: Date.now()
+        date: Date.now(),
+        allDay: true
       },
       people: [
         { text: 'Select One', value: null },
