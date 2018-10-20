@@ -13,7 +13,7 @@
           </b-form-input>
         </b-form-group>
         <b-form-group
-                      label="Date:">
+                      label="Date">
           <datepicker v-model="form.start" class="datepicker"></datepicker>
         </b-form-group>
         <b-form-group
@@ -32,11 +32,11 @@
                       v-model="form.task">
         </b-form-select>
         </b-form-group>
-        <b-button-group class="btn-wrapper">
-          <b-button v-if="!eventTask" type="reset" variant="danger">Reset</b-button>
-          <b-button v-if="eventTask" @click="onEdit" :class="{'edit-only' : eventTask}" variant="info">Edit</b-button>
-          <b-button v-else @click="onSubmit" type="submit" variant="primary">Submit</b-button>
-        </b-button-group>
+        <div class="btn-wrapper">
+          <b-button v-if="!eventTask" type="reset" variant="outline-info">Reset</b-button>
+          <b-button v-if="eventTask" @click="onEdit" :class="{'edit-only' : eventTask}" variant="info">Update</b-button>
+          <b-button v-else @click="onSubmit" type="submit" variant="info">Submit</b-button>
+        </div>
       </b-form>
     </div>
   </div>
@@ -132,15 +132,18 @@ export default {
 
 <style lang="scss">
 #create-update{
-  margin-top: 5%;
+  // margin-top: 5%;
   display: flex;
   justify-content: center;
+  color: #00d0aa;
+  background-color: #1a2a33;
   .datepicker input{
     width: 100%;
     height:calc(2.25rem + 2px);
   }
   .edit-only{
     width:100% !important;
+    margin-bottom: 15px;
   }
   .form-wrapper{
     display: flex;
@@ -149,6 +152,7 @@ export default {
   .btn-wrapper{
     display: flex;
     justify-content: center;
+    margin-bottom: 15px;
     .btn{
       width:50%;
     }
