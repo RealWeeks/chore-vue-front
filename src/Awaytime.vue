@@ -35,6 +35,8 @@
 
 <script>
 import moment from 'moment'
+import { extendMoment } from 'moment-range';
+const Moment = extendMoment(moment);
 import Datepicker from 'vuejs-datepicker'
 import Notifications from './common/notifications.vue'
 export default {
@@ -58,6 +60,8 @@ export default {
     handleSetAway(){
       this.form.start = moment(this.form.start).format('MM-DD-YYYY')
       this.form.end = moment(this.form.end).format('MM-DD-YYYY')
+      this.form.date_range = this.dateRange;
+
       this.axios.post('http://localhost:3000/events', this.form)
       .then((response)=>{
         this.$store.dispatch('GET_EVENTS')
@@ -70,7 +74,16 @@ export default {
     }
   },
   computed:{
-
+    dateRange(){
+      let start = new Date(this.form.start)
+      let end   = new Date(this.form.end)
+      let range = Moment.range(start, end)
+      for (let day of range.by('day')) {
+        day.format('YYYY-MM-DD');
+      }
+      let days = Array.from(range.by('day'));
+      return days.map(x => x.format('YYYY-MM-DD')) // [ '2018-10-03', '2018-10-04', '2018-10-05', '2018-10-06' ]
+    }
   },
   data () {
     return {
