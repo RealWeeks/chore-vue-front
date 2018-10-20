@@ -28,6 +28,7 @@ import Sidebar from './sidebar.vue'
 import Calendar from './Calendar.vue'
 import Searchdisplay from './Searchdisplay.vue'
 import Createupdate from './Createupdate.vue'
+import Awaytime from './Awaytime.vue'
 export default {
   name: 'app',
   components:{
@@ -36,6 +37,7 @@ export default {
     'sidebar' : Sidebar,
     'search-display' : Searchdisplay,
     'create-update' : Createupdate,
+    'away-time' : Awaytime,
   },
   created(){
     this.$store.dispatch('GET_EVENTS')
