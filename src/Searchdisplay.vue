@@ -3,10 +3,10 @@
     <div class="card-wrapper" v-for="item in filteredResults" :key="item._id">
       <b-card :title="item.title"
               tag="article"
-              style="width: 25rem;"
+              style="width: 20rem;"
               class="mb-2">
         <p class="card-text">
-          Title: {{item.title}} <br/>
+          Description: {{item.name}} <br/>
           Start: {{item.start}}
         </p>
       </b-card>
@@ -44,5 +44,6 @@ export default {
 }
 .card-wrapper{
   text-align: center;
+  margin-top: 10px;
 }
 </style>

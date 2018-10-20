@@ -1,13 +1,13 @@
 <template>
   <div id="app" class="container-fluid">
 
-    <div class="row">
+    <!-- <div class="row">
       <navbar @searchInput="handleSearch" class="col-md-12"/>
-    </div>
+    </div> -->
 
     <div class="row main-contents">
       <div class="col-md-5 set-colors">
-        <sidebar @createEvent="createEvent"/>
+        <sidebar @searchInput="handleSearch" @createEvent="createEvent"/>
       </div>
 
       <div class="col-md-7 set-colors">

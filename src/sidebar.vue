@@ -7,6 +7,9 @@
         <b-button @click="handleEventCreate" variant="outline-info">Create Item</b-button>
         <b-button variant="info">Set Away Dates</b-button>
       </div>
+      <div class="search-wrapper">
+        <b-form-input size="sm" class="mr-sm-2" type="text" v-model="searchInput" @input="handleInput" placeholder="Type to quick find"/>
+      </div>
     </div>
   </div>
 </template>
@@ -19,13 +22,16 @@ export default {
   methods:{
     handleEventCreate(){
       this.$emit('createEvent')
+    },
+    handleInput(term){
+      this.$emit('searchInput', term.toLowerCase())
     }
   },
   created(){
   },
   data () {
     return {
-      // msg: 'Welcome to Your Vue.js App'
+      searchInput:'',
     }
   }
 }
@@ -48,6 +54,9 @@ export default {
   .secondary-txt{
     color: white;
     font-family: 'Lato', sans-serif;
+  }
+  .search-wrapper{
+    margin-top: 15%;
   }
 }
 </style>
