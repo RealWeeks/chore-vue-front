@@ -53,7 +53,14 @@ export default {
   props:['selectedDate', 'eventTask'],
   methods:{
     onEdit(){
-      debugger
+      this.axios.put(`http://localhost:3000/events/${this.eventTask._id}`, this.form )
+      .then((response)=>{
+        this.$store.dispatch('GET_EVENTS')
+        this.$emit('closeCreateUpdate')
+      })
+      .catch((err)=>{
+        debugger
+      })
     },
     onSubmit (e) {
       e.preventDefault()

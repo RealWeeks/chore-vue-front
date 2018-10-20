@@ -43,7 +43,7 @@ export default {
     calendarizedData(){
       return this.json.map((x)=>{
         x.title = `${x.task}: ${x.person}`
-        x.start = moment(x.start).format('MM-DD-YYYY')
+        // x.start = moment(x.start).format('MM-DD-YYYY')
         return x
       })
     }

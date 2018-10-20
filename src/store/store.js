@@ -19,6 +19,11 @@ export const store = new Vuex.Store({
       axios.get('http://localhost:3000/events')
       .then((response)=>{
         if (response.status === 200) {
+          let idPreserve = response.data.map((x)=>{
+            x.id = x._id;
+            return x
+          })
+          // vuex overrides _id, touch it to keep
           commit('GET_EVENTS', response.data)
         }else{
           // handle error
