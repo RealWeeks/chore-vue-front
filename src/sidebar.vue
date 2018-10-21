@@ -17,6 +17,7 @@
 <script>
 export default {
   name: 'sidebar',
+  props:['searchTerm'],
   components : {
   },
   methods:{
@@ -31,6 +32,13 @@ export default {
     }
   },
   created(){
+  },
+  watch:{
+    searchTerm(term){
+      if (!term) {
+          this.searchInput = ''
+      }
+    }
   },
   data () {
     return {

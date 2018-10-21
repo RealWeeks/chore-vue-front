@@ -99,7 +99,14 @@ export default {
     }
   },
   created(){
-    this.form.start = Date.now()
+    if (this.eventTask) {
+      this.form.name = this.eventTask.name
+      this.form.task = this.eventTask.task
+      this.form.person = this.eventTask.person
+      this.form.start = this.eventTask.start
+    }else{
+      this.form.start = Date.now()
+    }
   },
   watch:{
     selectedDate(date){
@@ -107,14 +114,14 @@ export default {
     },
     eventTask(task){
       if(task){
-        this.form.name = task.name
+        this.form.title = task.name
         this.form.task = task.task
         this.form.person = task.person
         this.form.start = task.start
       }else{
         this.onReset()
       }
-    }
+    }, deep:true
   },
   data () {
     return {
@@ -140,9 +147,4 @@ export default {
 </script>
 
 <style scoped>
-.x-close{
-  display: flex;
-  justify-content: flex-end;
-  color: #00cfaa;
-}
 </style>
