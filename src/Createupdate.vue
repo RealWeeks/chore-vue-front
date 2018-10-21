@@ -1,43 +1,48 @@
 <template>
-  <div id="create-update" class="standard-form">
-    <div class="form-wrapper">
-      <b-form @reset="onReset" v-if="show">
-        <b-form-group
-                    label="Task name"
-                    description="Just enter task name and we'll take care of the formatting">
-          <b-form-input
-                      type="text"
-                      v-model="form.name"
-                      required
-                      placeholder="Enter task">
-          </b-form-input>
-        </b-form-group>
-        <b-form-group
-                      label="Date">
-          <datepicker v-model="form.start" class="datepicker"></datepicker>
-        </b-form-group>
-        <b-form-group
-                      label="Your Name">
-          <b-form-select
-                      :options="people"
-                      required
-                      v-model="form.person">
-        </b-form-select>
-        </b-form-group>
-        <b-form-group
-                      label="Desired task">
-          <b-form-select
-                      :options="tasks"
-                      required
-                      v-model="form.task">
-        </b-form-select>
-        </b-form-group>
-        <div class="btn-wrapper">
-          <b-button v-if="!eventTask" type="reset" variant="outline-info">Reset</b-button>
-          <b-button v-if="eventTask" @click="onEdit" :class="{'edit-only' : eventTask}" variant="info">Update</b-button>
-          <b-button v-else @click="onSubmit" type="submit" variant="info">Submit</b-button>
-        </div>
-      </b-form>
+  <div id="create-update">
+    <div @click="$emit('closeCreateUpdate')" class="x-close">
+      <v-icon name="times"/>
+    </div>
+    <div class="standard-form">
+      <div class="form-wrapper">
+        <b-form @reset="onReset" v-if="show">
+          <b-form-group
+                      label="Task name"
+                      description="Just enter task name and we'll take care of the formatting">
+            <b-form-input
+                        type="text"
+                        v-model="form.name"
+                        required
+                        placeholder="Enter task">
+            </b-form-input>
+          </b-form-group>
+          <b-form-group
+                        label="Date">
+            <datepicker v-model="form.start" class="datepicker"></datepicker>
+          </b-form-group>
+          <b-form-group
+                        label="Your Name">
+            <b-form-select
+                        :options="people"
+                        required
+                        v-model="form.person">
+          </b-form-select>
+          </b-form-group>
+          <b-form-group
+                        label="Desired task">
+            <b-form-select
+                        :options="tasks"
+                        required
+                        v-model="form.task">
+          </b-form-select>
+          </b-form-group>
+          <div class="btn-wrapper">
+            <b-button v-if="!eventTask" type="reset" variant="outline-info">Reset</b-button>
+            <b-button v-if="eventTask" @click="onEdit" :class="{'edit-only' : eventTask}" variant="info">Update</b-button>
+            <b-button v-else @click="onSubmit" type="submit" variant="info">Submit</b-button>
+          </div>
+        </b-form>
+      </div>
     </div>
   </div>
 </template>
@@ -134,5 +139,10 @@ export default {
 }
 </script>
 
-<style lang="scss">
+<style scoped>
+.x-close{
+  display: flex;
+  justify-content: flex-end;
+  color: #00cfaa;
+}
 </style>

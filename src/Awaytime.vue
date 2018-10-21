@@ -1,5 +1,8 @@
 <template>
   <div id="away-time" class="standard-form">
+    <div @click="$emit('closeAwaytime')" class="x-close">
+      <v-icon name="times"/>
+    </div>
     <div class="form-wrapper">
       <b-form v-if="show">
         <b-form  class="away-date-inputs" inline>
@@ -37,6 +40,7 @@
 import moment from 'moment'
 import { extendMoment } from 'moment-range';
 const Moment = extendMoment(moment);
+// import Icon from 'vue-awesome/components/Icon'
 import Datepicker from 'vuejs-datepicker'
 import Notifications from './common/notifications.vue'
 export default {
@@ -44,7 +48,8 @@ export default {
   props:[],
   mixins:[Notifications],
   components : {
-    'datepicker': Datepicker
+    'datepicker': Datepicker,
+    // 'v-icon': Icon,
   },
   created(){
   },
@@ -109,6 +114,9 @@ export default {
   margin-top: 20px;
   display: flex;
   flex-direction: column;
+}
+.x-close{
+  align-self: flex-end;
 }
 .away-date-inputs{
   margin-top: 20px;

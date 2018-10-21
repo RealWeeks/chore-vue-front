@@ -14,7 +14,7 @@
         <calender v-if="showCalComponent" :json="events" />
         <search-display :searchTerm="searchTerm" :json="events" v-else-if="!showCreate && !showAwayForm" />
         <away-time v-else-if="showAwayForm" @closeAwaytime="showAway" />
-        <create-update class="add-top-margin" v-else />
+        <create-update @closeCreateUpdate="createEvent" class="add-top-margin" v-else />
       </div>
     </div>
 
@@ -153,5 +153,8 @@ html, body, #container, #app{
       width:50%;
     }
   }
+}
+.x-close:hover{
+  cursor:pointer;
 }
 </style>

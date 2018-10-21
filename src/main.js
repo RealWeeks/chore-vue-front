@@ -4,6 +4,7 @@ import VueNotifications from 'vue-notifications'
 import miniToastr from 'mini-toastr'
 import axios from 'axios'
 import VueAxios from 'vue-axios'
+// import 'vue-awesome/icons/times'
 
 import fullCalendar from 'vue-fullcalendar'
 
@@ -12,6 +13,9 @@ import App from './App.vue'
 
 import "bootstrap/dist/css/bootstrap.min.css"
 import "bootstrap-vue/dist/bootstrap-vue.css"
+
+import 'vue-awesome/icons/times'
+import Icon from 'vue-awesome/components/Icon.vue'
 
 
 miniToastr.init()
@@ -28,6 +32,7 @@ const options = {
 }
 
 Vue.component('full-calendar', fullCalendar)
+Vue.component('v-icon', Icon)
 
 Vue.use(VueNotifications, options)
 Vue.use(BootstrapVue)
