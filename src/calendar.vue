@@ -41,7 +41,11 @@ export default {
   computed:{
     calendarizedData(){
       return this.json.map((x)=>{
-        x.title = `${x.task}: ${x.person}`
+        if (x.event_type === 'away') {
+          x.title = `Away - ${x.person}`;
+        }else{
+          x.title = `${x.task}: ${x.person}`;
+        }
         return x
       })
     }
