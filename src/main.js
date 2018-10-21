@@ -4,7 +4,6 @@ import VueNotifications from 'vue-notifications'
 import miniToastr from 'mini-toastr'
 import axios from 'axios'
 import VueAxios from 'vue-axios'
-// import 'vue-awesome/icons/times'
 
 import fullCalendar from 'vue-fullcalendar'
 

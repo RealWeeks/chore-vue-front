@@ -1,10 +1,5 @@
 <template>
   <div id="app" class="container-fluid">
-
-    <!-- <div class="row">
-      <navbar @searchInput="handleSearch" class="col-md-12"/>
-    </div> -->
-
     <div class="row main-contents">
       <div class="col-md-5 set-colors">
         <sidebar @searchInput="handleSearch" @showAway="showAway" @createEvent="createEvent"/>
@@ -17,13 +12,10 @@
         <create-update @closeCreateUpdate="createEvent" class="add-top-margin" v-else />
       </div>
     </div>
-
-
   </div>
 </template>
 
 <script>
-// import JSONDATA from './assets/chore-calendar.json';
 import Navbar from './navbar.vue'
 import Sidebar from './sidebar.vue'
 import Calendar from './Calendar.vue'
@@ -65,7 +57,6 @@ export default {
   data () {
     return {
       searchTerm: '',
-      // json: JSONDATA,
       showCreate:false,
       showAwayForm: false,
     }

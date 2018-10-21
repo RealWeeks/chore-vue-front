@@ -5,7 +5,6 @@
         <div>
          <b-modal ref="quickCreate" @hidden="eventTask = null" hide-footer hide-header>
            <create-update @closeCreateUpdate="hideModal" :eventTask="eventTask" :selectedDate="selectedDate"/>
-           <!-- <b-btn class="mt-3" @click="hideModal" variant="outline-danger" block >Close</b-btn> -->
          </b-modal>
        </div>
       </div>

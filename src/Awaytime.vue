@@ -23,12 +23,6 @@
                       v-model="form.person">
         </b-form-select>
         </b-form-group>
-
-        <!-- <div class="btn-wrapper">
-          <b-button v-if="!eventTask" type="reset" variant="outline-info">Reset</b-button>
-          <b-button v-if="eventTask" @click="onEdit" :class="{'edit-only' : eventTask}" variant="info">Update</b-button>
-          <b-button v-else @click="onSubmit" type="submit" variant="info">Submit</b-button>
-        </div> -->
       </b-form>
 
     </div>
@@ -40,7 +34,6 @@
 import moment from 'moment'
 import { extendMoment } from 'moment-range';
 const Moment = extendMoment(moment);
-// import Icon from 'vue-awesome/components/Icon'
 import Datepicker from 'vuejs-datepicker'
 import Notifications from './common/notifications.vue'
 export default {
@@ -49,7 +42,6 @@ export default {
   mixins:[Notifications],
   components : {
     'datepicker': Datepicker,
-    // 'v-icon': Icon,
   },
   created(){
   },
@@ -66,7 +58,6 @@ export default {
       this.form.start = moment(this.form.start).format('MM-DD-YYYY')
       this.form.end = moment(this.form.end).format('MM-DD-YYYY')
       this.form.date_range = this.dateRange;
-// debugger
       this.axios.post('http://localhost:3000/events', this.form)
       .then((response)=>{
         this.$store.dispatch('GET_EVENTS')

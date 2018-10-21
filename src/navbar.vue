@@ -4,8 +4,6 @@
 
     <b-navbar-toggle target="nav_collapse"></b-navbar-toggle>
 
-    <!-- <b-navbar-brand href="#">Chore Calendar Viewer</b-navbar-brand> -->
-
     <b-collapse is-nav id="nav_collapse">
 
       <!-- Right aligned nav items -->
