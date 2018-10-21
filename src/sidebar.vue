@@ -4,7 +4,7 @@
       <h1 class="headline-txt">Task Assigner...</h1><br/>
       <h3 class="secondary-txt">An easy viewer for roomate tasks</h3><br/>
       <div class="btn-holder">
-        <b-button @click="handleEventCreate" variant="outline-info">Create Item</b-button>
+        <b-button @click="handleEventCreate" variant="outline-info">Create Task</b-button>
         <b-button @click="handleShowAway" variant="info">Set Away Dates</b-button>
       </div>
       <div class="search-wrapper">
