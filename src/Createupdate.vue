@@ -140,9 +140,4 @@ export default {
 </script>
 
 <style scoped>
-.x-close{
-  display: flex;
-  justify-content: flex-end;
-  color: #00cfaa;
-}
 </style>

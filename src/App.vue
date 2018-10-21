@@ -2,12 +2,12 @@
   <div id="app" class="container-fluid">
     <div class="row main-contents">
       <div class="col-md-5 set-colors">
-        <sidebar @searchInput="handleSearch" @showAway="showAway" @createEvent="createEvent"/>
+        <sidebar :searchTerm="searchTerm" @searchInput="handleSearch" @showAway="showAway" @createEvent="createEvent"/>
       </div>
 
       <div class="col-md-7 set-colors">
         <calender v-if="showCalComponent" :json="events" />
-        <search-display :searchTerm="searchTerm" :json="events" v-else-if="!showCreate && !showAwayForm" />
+        <search-display @closeSearchDisplay="closeSearchDisplay" :searchTerm="searchTerm" :json="events" v-else-if="!showCreate && !showAwayForm" />
         <away-time v-else-if="showAwayForm" @closeAwaytime="showAway" />
         <create-update @closeCreateUpdate="createEvent" class="add-top-margin" v-else />
       </div>
@@ -52,6 +52,9 @@ export default {
     },
     showAway(){
       this.showAwayForm = !this.showAwayForm
+    },
+    closeSearchDisplay(){
+      this.searchTerm = ''
     }
   },
   data () {
@@ -144,6 +147,11 @@ html, body, #container, #app{
       width:50%;
     }
   }
+}
+.x-close{
+  display: flex;
+  justify-content: flex-end;
+  color: #00cfaa;
 }
 .x-close:hover{
   cursor:pointer;
