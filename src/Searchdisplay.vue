@@ -13,7 +13,7 @@
             Description: {{item.name}} <br/>
             Start: {{item.start}}
           </p>
-          <b-button variant="outline-info">Edit Task</b-button>
+          <b-button @click="handleEdit(item)"variant="outline-info">Edit Task</b-button>
           <b-button @click="handleDelete(item)" variant="info">Delete Task</b-button>
         </b-card>
       </div>
@@ -32,6 +32,9 @@ export default {
   created(){
   },
   methods:{
+    handleEdit(item){
+      this.$emit('handleEdit', item)
+    },
     handleDelete(item){
       this.axios.delete(`http://localhost:3000/events/${item.id}`)
       .then((response)=>{
@@ -45,7 +48,7 @@ export default {
   },
   computed:{
     filteredResults(){
-      return this.json.filter(x => x.person.toLowerCase().includes(this.searchTerm) || x.start.toLowerCase().includes(this.searchTerm))
+      return this.json.filter(x => x.person.toLowerCase().includes(this.searchTerm) || x.start.toLowerCase().includes(this.searchTerm) || x.title.toLowerCase().includes(this.searchTerm))
     }
   },
   data () {

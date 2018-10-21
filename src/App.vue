@@ -7,9 +7,9 @@
 
       <div class="col-md-7 set-colors">
         <calender v-if="showCalComponent" :json="events" />
-        <search-display @closeSearchDisplay="closeSearchDisplay" :searchTerm="searchTerm" :json="events" v-else-if="!showCreate && !showAwayForm" />
+        <search-display @handleEdit="handleEdit" @closeSearchDisplay="closeSearchDisplay" :searchTerm="searchTerm" :json="events" v-else-if="!showCreate && !showAwayForm" />
         <away-time v-else-if="showAwayForm" @closeAwaytime="showAway" />
-        <create-update @closeCreateUpdate="createEvent" class="add-top-margin" v-else />
+        <create-update :eventTask="taskItem" @closeCreateUpdate="createEvent" class="add-top-margin" v-else />
       </div>
     </div>
   </div>
@@ -55,6 +55,10 @@ export default {
     },
     closeSearchDisplay(){
       this.searchTerm = ''
+    },
+    handleEdit(item){
+      this.taskItem = item
+      this.createEvent()
     }
   },
   data () {
@@ -62,6 +66,7 @@ export default {
       searchTerm: '',
       showCreate:false,
       showAwayForm: false,
+      taskItem: null,
     }
   }
 }
