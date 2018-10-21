@@ -1,5 +1,7 @@
 # Chore Calendar ICS
 
+![Screenshot](https://user-images.githubusercontent.com/10408784/47262243-056b0600-d4b1-11e8-8837-55758b530dbf.png "Screenshot")
+
 A front end interface for viewing and editing a shared chore calender.
 
 ~Data generated via branch of [ics-chore-chart](https://github.com/RealWeeks/ics-chore-chart).~
